@@ -34,13 +34,24 @@ const GithubUserProfile = () => {
       .catch((e) => console.log(e))
       .finally(() => setLoading(false));
 
-    const usr1 = parseInt(user1?.following) + parseInt(user1?.followers);
-    const usr2 = parseInt(user2?.following) + parseInt(user2?.followers);
-    console.log(usr2);
-    if (usr1 > usr2) {
-      alert("user1 win");
-    } else alert("user2 win");
+    
   };
+
+  useEffect(()=>{
+    if(user2){
+      const usr1 = parseInt(user1?.following) + parseInt(user1?.followers);
+      const usr2 = parseInt(user2?.following) + parseInt(user2?.followers);
+      console.log(usr2);
+      
+      if (usr1 > usr2) {
+        alert("user1 win");
+      }
+      else if(usr1<usr2){
+        alert("user 2 win");
+
+      } else {alert("no wins")}
+    }
+  },[user2])
 
   return (
       <div className="container text-center">
